@@ -15,6 +15,8 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var photos : NSArray?
     
+    var refreshControl:UIRefreshControl!
+
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,11 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //photosTableView.estimatedRowHeight = 100
         //photosTableView.rowHeight = UITableViewAutomaticDimension
         
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.photosTableView.addSubview(refreshControl)
         
       
         let clientId = "da7ee5f94f69422b924a22daf4243f62"
@@ -46,6 +53,25 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
     }
   
+    
+    func refresh(sender:AnyObject)
+    {
+      
+        
+        let clientId = "da7ee5f94f69422b924a22daf4243f62"
+        let url = NSURL(string: "https://api.instagram.com/v1/media/popular?client_id=\(clientId)")!
+        let request = NSURLRequest(URL: url)
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
+            let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(data!, options:[]) as! NSDictionary
+            self.photos = responseDictionary["data"] as? NSArray
+            self.photosTableView.reloadData()
+        }
+        
+        self.refreshControl.endRefreshing()
+
+    }
+    
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("instagramfeedcell", forIndexPath: indexPath) as! PhotoCellTableViewCell
