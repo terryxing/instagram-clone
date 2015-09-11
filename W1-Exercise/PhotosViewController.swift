@@ -23,6 +23,7 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
         photosTableView.delegate = self
      
         self.photosTableView.rowHeight = 320
+        
       
         let clientId = "da7ee5f94f69422b924a22daf4243f62"
         let url = NSURL(string: "https://api.instagram.com/v1/media/popular?client_id=\(clientId)")!
@@ -33,7 +34,7 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.photos = responseDictionary["data"] as? NSArray
             self.photosTableView.reloadData()
           
-            //NSLog("the length of the photos NSArray is: \(self.photos?.count)")
+            NSLog("the length of the photos NSArray is: \(self.photos?.count)")
             NSLog("response: \(self.photos)")
  
           
@@ -58,11 +59,13 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let profilePic = currUser["profile_picture"] as! NSString
     
         let profilePicURL = NSURL(string: profilePic as String)
-
     
         cell.imageViewTemplate.setImageWithURL(imageURL!)
         cell.pertraitImage.setImageWithURL(profilePicURL!)
         cell.userName.text = username as String
+    
+
+
     
     
 //        let url = NSURL(string: url)

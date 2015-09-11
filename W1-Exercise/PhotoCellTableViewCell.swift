@@ -20,6 +20,13 @@ class PhotoCellTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        pertraitImage.layer.borderWidth = 1
+        pertraitImage.layer.masksToBounds = false
+        pertraitImage.layer.borderColor = UIColor.blackColor().CGColor
+        pertraitImage.layer.cornerRadius = pertraitImage.frame.height/2
+        pertraitImage.clipsToBounds = true
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
