@@ -21,8 +21,11 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
       
         photosTableView.dataSource = self
         photosTableView.delegate = self
-     
-        self.photosTableView.rowHeight = 320
+        photosTableView.rowHeight = 320
+        
+        //photosTableView.estimatedRowHeight = 100
+        //photosTableView.rowHeight = UITableViewAutomaticDimension
+        
         
       
         let clientId = "da7ee5f94f69422b924a22daf4243f62"
@@ -34,8 +37,8 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.photos = responseDictionary["data"] as? NSArray
             self.photosTableView.reloadData()
           
-            NSLog("the length of the photos NSArray is: \(self.photos?.count)")
-            NSLog("response: \(self.photos)")
+          //  NSLog("the length of the photos NSArray is: \(self.photos?.count)")
+          //  NSLog("response: \(self.photos)")
  
           
         }
@@ -82,22 +85,47 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
   
   }
   
+    
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
   
-
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    /*
+   
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let vc = segue.destinationViewController as! PhotoDetailsViewController
+        let indexPath = photosTableView.indexPathForCell(sender as! UITableViewCell)
+        
+        let currPhoto = self.photos![indexPath!.row] as! NSDictionary
+        let currImage = currPhoto["images"] as! NSDictionary
+        let currLowResolution = currImage["standard_resolution"] as! NSDictionary
+        let currURLString = currLowResolution["url"] as! NSString
+        let imageURL = NSURL(string: currURLString as String)
+        
+        NSLog("imageURL is: \(imageURL)")
+        
+        vc.currURL = imageURL
+        
+        //vc.currImage = imageURL!
+        
+        //vc.detailedImageView?.setImageWithURL(imageURL!)
+        
+        
     }
-    */
+  
 
 }

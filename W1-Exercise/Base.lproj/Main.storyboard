@@ -17,11 +17,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="instagramfeedcell" rowHeight="320" id="x8o-c8-bcv" customClass="PhotoCellTableViewCell" customModule="W1_Exercise" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="instagramfeedcell" rowHeight="320" id="x8o-c8-bcv" customClass="PhotoCellTableViewCell" customModule="W1_Exercise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="320"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x8o-c8-bcv" id="Aj4-e4-skp">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="320"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6xz-Hl-yu1">
@@ -45,6 +45,7 @@
                                             <outlet property="imageViewTemplate" destination="6xz-Hl-yu1" id="mtw-Mb-huk"/>
                                             <outlet property="pertraitImage" destination="vkb-gn-DQJ" id="qLj-W1-G2p"/>
                                             <outlet property="userName" destination="hvB-UZ-wxg" id="Xfv-MI-0mw"/>
+                                            <segue destination="ECC-xT-KHZ" kind="push" id="Eec-uK-STT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -64,6 +65,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="698" y="336"/>
+        </scene>
+        <!--Photo Details View Controller-->
+        <scene sceneID="CUb-KK-Mks">
+            <objects>
+                <viewController id="ECC-xT-KHZ" customClass="PhotoDetailsViewController" customModule="W1_Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tcz-St-aIB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qOI-dR-Z8O">
+                                <rect key="frame" x="20" y="104" width="280" height="261"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="caB-Aw-WOz"/>
+                    <connections>
+                        <outlet property="detailedImageView" destination="qOI-dR-Z8O" id="tdO-ht-QwV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yi8-Cj-x2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1130" y="336"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nE3-0m-PsG">

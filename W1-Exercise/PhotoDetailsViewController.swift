@@ -7,19 +7,32 @@
 //
 
 import UIKit
+import AFNetworking
+
 
 class PhotoDetailsViewController: UIViewController {
 
+    @IBOutlet weak var detailedImageView: UIImageView!
+    
+    var currURL : NSURL!
+ 
+    
+    //var currImage : NSURL
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+//        let url = NSURL(string: "https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/s480x480/e35/11925840_921348811283341_1173124195_n.jpg" as String)
+//        
+        self.detailedImageView.setImageWithURL(currURL!)
+     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*
