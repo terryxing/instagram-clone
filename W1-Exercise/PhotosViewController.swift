@@ -62,7 +62,7 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
         cell.imageViewTemplate.setImageWithURL(imageURL!)
         cell.pertraitImage.setImageWithURL(profilePicURL!)
-        //cell.userName.text = username as String
+        cell.userName.text = username as String
     
     
 //        let url = NSURL(string: url)
