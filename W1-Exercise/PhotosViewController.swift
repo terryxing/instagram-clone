@@ -27,7 +27,7 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var clientId = "da7ee5f94f69422b924a22daf4243f62"
         var url = NSURL(string: "https://api.instagram.com/v1/media/popular?client_id=\(clientId)")!
         var request = NSURLRequest(URL: url)
-        
+              
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             var responseDictionary = try! NSJSONSerialization.JSONObjectWithData(data!, options:[]) as! NSDictionary
             self.photos = responseDictionary["data"] as! NSArray
