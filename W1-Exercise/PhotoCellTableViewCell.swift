@@ -1,4 +1,4 @@
-//  
+//
 //  PhotoCellTableViewCell.swift
 //  W1-Exercise
 //
@@ -10,8 +10,13 @@ import UIKit
 
 class PhotoCellTableViewCell: UITableViewCell {
 
-  @IBOutlet weak var imageViewTemplate: UIImageView!
+    @IBOutlet weak var imageViewTemplate: UIImageView!
   
+    @IBOutlet weak var pertraitImage: UIImageView!
+  
+       
+    @IBOutlet weak var userName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

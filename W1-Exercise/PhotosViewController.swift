@@ -24,19 +24,19 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
      
         self.photosTableView.rowHeight = 320
       
-        var clientId = "da7ee5f94f69422b924a22daf4243f62"
-        var url = NSURL(string: "https://api.instagram.com/v1/media/popular?client_id=\(clientId)")!
-        var request = NSURLRequest(URL: url)
+        let clientId = "da7ee5f94f69422b924a22daf4243f62"
+        let url = NSURL(string: "https://api.instagram.com/v1/media/popular?client_id=\(clientId)")!
+        let request = NSURLRequest(URL: url)
               
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-            var responseDictionary = try! NSJSONSerialization.JSONObjectWithData(data!, options:[]) as! NSDictionary
-            self.photos = responseDictionary["data"] as! NSArray
+            let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(data!, options:[]) as! NSDictionary
+            self.photos = responseDictionary["data"] as? NSArray
             self.photosTableView.reloadData()
           
-            NSLog("the length of the photos NSArray is: \(self.photos?.count)")
+            //NSLog("the length of the photos NSArray is: \(self.photos?.count)")
             NSLog("response: \(self.photos)")
  
-            
+          
         }
      
         // Do any additional setup after loading the view.
@@ -47,26 +47,35 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let cell = tableView.dequeueReusableCellWithIdentifier("instagramfeedcell", forIndexPath: indexPath) as! PhotoCellTableViewCell
     
     
-        var currPhoto = self.photos![indexPath.row] as! Dictionary<String, Any>
-        var currImage = currPhoto["images"] as! Dictionary<String, Any>
-        var currLowResolution = currImage["low_resolution"] as! Dictionary<String, Any>
+        let currPhoto = self.photos![indexPath.row] as! NSDictionary
+        let currImage = currPhoto["images"] as! NSDictionary
+        let currLowResolution = currImage["low_resolution"] as! NSDictionary
         let currURLString = currLowResolution["url"] as! NSString
-        let url = NSURL(string: currURLString as String)
+        let imageURL = NSURL(string: currURLString as String)
     
-        cell.imageViewTemplate.setImageWithURL(url!)
+        let currUser = currPhoto["user"] as! NSDictionary
+        let username = currUser["username"] as! NSString
+        let profilePic = currUser["profile_picture"] as! NSString
+    
+        let profilePicURL = NSURL(string: profilePic as String)
+
+    
+        cell.imageViewTemplate.setImageWithURL(imageURL!)
+        cell.pertraitImage.setImageWithURL(profilePicURL!)
+        //cell.userName.text = username as String
     
     
 //        let url = NSURL(string: url)
 //       cell.imageViewTemplate.setImageWithURL(url!)
     
-    return cell
+        return cell
   }
   
   
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     //return (self.photos?.count)!
-    return (self.photos?.count)!
+    return  photos?.count ?? 0
   
   }
   
