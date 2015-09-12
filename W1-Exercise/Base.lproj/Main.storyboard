@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
     </dependencies>
     <scenes>
-        <!--Photos View Controller-->
+        <!--Instagram-Clone-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="PhotosViewController" customModule="W1_Exercise" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,7 +57,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sXL-2F-oA5"/>
+                    <navigationItem key="navigationItem" title="Instagram-Clone" id="sXL-2F-oA5"/>
                     <connections>
                         <outlet property="photosTableView" destination="R1H-NY-8XG" id="VOP-RZ-FA5"/>
                     </connections>
