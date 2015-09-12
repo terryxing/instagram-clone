@@ -104,14 +104,14 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   
-  
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //return (self.photos?.count)!
-    return  photos?.count ?? 0
-  
-  }
-  
     
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return (self.photos?.count)!
+        return  photos?.count ?? 0
+        
+    }
+
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
